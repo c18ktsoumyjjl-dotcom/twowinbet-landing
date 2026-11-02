@@ -6,81 +6,146 @@
   <title>투윈BET 접속 안내</title>
   <meta name="robots" content="noindex,nofollow" />
   <style>
-    :root { --navy: #122430; --mint: #2EE8A8; }
+    :root {
+      --navy: #122430;
+      --mint: #2EE8A8;
+      --mint-dim: rgba(46, 232, 168, 0.22);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
       background: var(--navy);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-    /* scale-to-fit (contain): 이미지 전부 보이되, 뷰포트는 네이비로 채움 */
-    .frame {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 0;
+    .page {
+      position: relative;
+      min-height: 100dvh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 28px;
+      overflow: hidden;
     }
-    .art {
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      object-fit: fill;
-      user-select: none;
-      pointer-events: none;
-      -webkit-user-drag: none;
     }
-    .hotspot {
+    .bg::after {
+      content: "";
       position: absolute;
-      display: block;
-      z-index: 2;
-      border-radius: 12px;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(18,36,48,0.15) 0%, rgba(18,36,48,0.35) 45%, rgba(18,36,48,0.82) 100%);
     }
-    .hotspot:focus-visible {
-      outline: 2px solid var(--mint);
-      outline-offset: 2px;
+    .panel {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: min(38vh, 340px);
     }
-
-    /* PC: 16:9 contain — 잘림 없이 전체 표시 */
-    @media (min-width: 901px) {
-      .frame {
-        width: min(100vw, calc(100svh * 16 / 9));
-        height: min(100svh, calc(100vw * 9 / 16));
-      }
-      .hs-d1 { left: 36.7%; top: 31.9%; width: 26.6%; height: 7.6%; }
-      .hs-d2 { left: 36.7%; top: 43.1%; width: 26.6%; height: 7.6%; }
-      .hs-d3 { left: 36.7%; top: 54.2%; width: 26.6%; height: 7.6%; }
-      .hs-slot { left: 33.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
-      .hs-tg { left: 51.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
-    }
-
-    /* 모바일: 2:3 contain — 슬롯/텔레그램까지 전부 보이게 */
     @media (max-width: 900px) {
-      .frame {
-        width: min(100vw, calc(100svh * 2 / 3));
-        height: min(100svh, calc(100vw * 3 / 2));
-      }
-      .hs-d1 { left: 25.8%; top: 60.9%; width: 48.8%; height: 7.4%; }
-      .hs-d2 { left: 25.8%; top: 70.1%; width: 48.8%; height: 7.4%; }
-      .hs-d3 { left: 25.8%; top: 79.2%; width: 48.8%; height: 7.4%; }
-      .hs-slot { left: 17.1%; top: 89.1%; width: 31.6%; height: 5.9%; border-radius: 999px; }
-      .hs-tg { left: 51.5%; top: 89.1%; width: 31.9%; height: 5.9%; border-radius: 999px; }
+      .panel { margin-top: min(42vh, 380px); max-width: 340px; }
+    }
+    .domains {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .domain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 54px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      background: linear-gradient(180deg, #1a3a4d 0%, #0e2432 100%);
+      border: 1.5px solid var(--mint);
+      box-shadow:
+        0 0 0 1px rgba(46,232,168,0.15),
+        0 0 18px rgba(46,232,168,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .domain:active { transform: scale(0.98); }
+    .cta-row {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .cta {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #0a1a22;
+      font-weight: 800;
+      font-size: 0.92rem;
+      background: linear-gradient(180deg, #5ff0c0 0%, var(--mint) 100%);
+      box-shadow: 0 0 16px rgba(46,232,168,0.45);
+      white-space: nowrap;
+      padding: 0 10px;
+    }
+    .cta:active { transform: scale(0.98); }
+    .hint {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      line-height: 1.45;
+    }
+    @media (min-width: 901px) {
+      .domain { height: 58px; font-size: 1.25rem; }
+      .cta { height: 48px; font-size: 1rem; }
+      .panel { max-width: 460px; }
     }
   </style>
 </head>
 <body>
-  <main class="frame" role="main" aria-label="투윈BET 접속 안내">
+  <div class="bg" aria-hidden="true">
     <picture>
       <source media="(max-width: 900px)" srcset="bg-mobile.png" />
-      <img class="art" src="bg.png" width="1280" height="720" alt="투윈BET 접속 안내" />
+      <img src="bg.png" alt="" />
     </picture>
-    <a class="hotspot hs-d1" href="https://sgo688.com" target="_blank" rel="noopener noreferrer" aria-label="sgo688.com"></a>
-    <a class="hotspot hs-d2" href="https://sgo334.com" target="_blank" rel="noopener noreferrer" aria-label="sgo334.com"></a>
-    <a class="hotspot hs-d3" href="https://sg778.com" target="_blank" rel="noopener noreferrer" aria-label="sg778.com"></a>
-    <a class="hotspot hs-slot" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer" aria-label="슬롯방송 바로가기"></a>
-    <a class="hotspot hs-tg" href="https://t.me/member_inquiry_cs_bot" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 바로가기"></a>
+  </div>
+  <main class="page" role="main" aria-label="투윈BET 접속 안내">
+    <div class="panel">
+      <div class="domains">
+        <a class="domain" href="https://sgo688.com" target="_blank" rel="noopener noreferrer">sgo688.com</a>
+        <a class="domain" href="https://sgo334.com" target="_blank" rel="noopener noreferrer">sgo334.com</a>
+        <a class="domain" href="https://sg778.com" target="_blank" rel="noopener noreferrer">sg778.com</a>
+      </div>
+      <div class="cta-row">
+        <a class="cta" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer">슬롯방송 바로가기</a>
+        <a class="cta" href="https://t.me/member_inquiry_cs_bot" target="_blank" rel="noopener noreferrer">텔레그램 바로가기</a>
+      </div>
+      <p class="hint">위 주소를 누르면 사이트로 이동합니다.</p>
+    </div>
   </main>
 </body>
 </html>
