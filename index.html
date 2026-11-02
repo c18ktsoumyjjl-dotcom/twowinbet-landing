@@ -14,7 +14,6 @@
       background: var(--navy);
       -webkit-tap-highlight-color: transparent;
     }
-    /* 이미지 실제 비율에 핫스팟을 고정 → PC/모바일 동일 */
     .frame {
       position: relative;
       width: 100%;
@@ -26,7 +25,6 @@
       width: 100%;
       height: auto;
       display: block;
-      vertical-align: top;
       user-select: none;
       pointer-events: none;
       -webkit-user-drag: none;
@@ -41,17 +39,13 @@
       outline: 2px solid var(--mint);
       outline-offset: 2px;
     }
+    /* PC 가로 시안 핫스팟 */
     .hs-d1 { left: 36.7%; top: 31.9%; width: 26.6%; height: 7.6%; }
     .hs-d2 { left: 36.7%; top: 43.1%; width: 26.6%; height: 7.6%; }
     .hs-d3 { left: 36.7%; top: 54.2%; width: 26.6%; height: 7.6%; }
     .hs-slot { left: 33.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
     .hs-tg { left: 51.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
 
-    /* 모바일: 가로 꽉 채움, 위아래 네이비. 세로로 스크롤 가능 */
-    @media (max-width: 900px) {
-      .frame { max-width: none; width: 100vw; }
-    }
-    /* 짧은 가로 비율 화면(폰 가로모드 등)에서도 중앙 */
     @media (min-width: 901px) {
       body {
         min-height: 100svh;
@@ -60,11 +54,42 @@
         justify-content: center;
       }
     }
+
+    /* 모바일: 세로 시안 + 화면 꽉 채움(cover) */
+    @media (max-width: 900px) {
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
+      .frame {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: none;
+        /* 1024×1536 = 2:3 */
+        width: max(100vw, calc(100svh * 2 / 3));
+        height: max(100svh, calc(100vw * 3 / 2));
+      }
+      .art {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+      .hs-d1 { left: 25.8%; top: 60.9%; width: 48.8%; height: 7.4%; }
+      .hs-d2 { left: 25.8%; top: 70.1%; width: 48.8%; height: 7.4%; }
+      .hs-d3 { left: 25.8%; top: 79.2%; width: 48.8%; height: 7.4%; }
+      .hs-slot { left: 17.1%; top: 89.1%; width: 31.6%; height: 5.9%; border-radius: 999px; }
+      .hs-tg { left: 51.5%; top: 89.1%; width: 31.9%; height: 5.9%; border-radius: 999px; }
+    }
   </style>
 </head>
 <body>
   <main class="frame" role="main" aria-label="투윈BET 접속 안내">
-    <img class="art" src="bg.png" width="1280" height="720" alt="투윈BET 접속 안내" />
+    <picture>
+      <source media="(max-width: 900px)" srcset="bg-mobile.png" />
+      <img class="art" src="bg.png" width="1280" height="720" alt="투윈BET 접속 안내" />
+    </picture>
     <a class="hotspot hs-d1" href="https://sgo688.com" target="_blank" rel="noopener noreferrer" aria-label="sgo688.com"></a>
     <a class="hotspot hs-d2" href="https://sgo334.com" target="_blank" rel="noopener noreferrer" aria-label="sgo334.com"></a>
     <a class="hotspot hs-d3" href="https://sg778.com" target="_blank" rel="noopener noreferrer" aria-label="sg778.com"></a>
