@@ -19,39 +19,21 @@
       font-family: "Nanum Gothic", "Noto Sans KR", system-ui, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100svh;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    /* PC·모바일 동일: 시안 이미지 + 투명 클릭 영역 */
     .stage {
       position: relative;
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
+      width: min(100vw, 1280px);
       aspect-ratio: 1280 / 720;
-      background: var(--navy) center / cover no-repeat url("bg.png");
+      background: var(--navy) center / 100% 100% no-repeat url("bg.png");
       overflow: hidden;
     }
-    @media (max-width: 900px) {
-      .stage {
-        aspect-ratio: auto;
-        min-height: 100svh;
-        /* 배경 시안(도메인 글자 박힘) 숨기고 네이비 + 실버튼만 */
-        background-image: none !important;
-        background-color: var(--navy);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 10vh 5vw 6vh;
-        gap: 2.5vh;
-      }
-      .desktop-only { display: none !important; }
-      .mobile-ui { display: flex !important; }
-      .veil { display: none !important; }
-    }
-    @media (min-width: 901px) {
-      .mobile-ui { display: none !important; }
-      body { display: flex; align-items: center; justify-content: center; min-height: 100svh; }
-      .stage { width: min(100vw, 1280px); }
-    }
-
     .hotspot {
       position: absolute;
       display: block;
@@ -68,92 +50,24 @@
     .hs-slot { left: 33.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
     .hs-tg { left: 51.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
 
-    .mobile-ui {
-      display: none;
-      width: min(100%, 420px);
-      flex-direction: column;
-      gap: 12px;
-      margin-top: auto;
-      margin-bottom: 4vh;
-      z-index: 3;
-    }
-    .logo-m {
-      width: min(70vw, 280px);
-      height: auto;
-      align-self: center;
-      margin-bottom: 2vh;
-      filter: drop-shadow(0 0 12px rgba(46,232,168,.35));
-    }
-    .copy-m {
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.55;
-      opacity: .95;
-      text-shadow: 0 2px 10px #000;
-      margin-bottom: 1vh;
-    }
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: .02em;
-      border-radius: 14px;
-      border: 2px solid var(--mint);
-      background: rgba(8, 18, 28, 0.78);
-      box-shadow: 0 0 18px rgba(46, 232, 168, 0.45), inset 0 0 12px rgba(46,232,168,.12);
-      min-height: 52px;
-      font-size: 17px;
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-row {
-      display: flex;
-      gap: 10px;
-    }
-    .btn-row .btn {
-      flex: 1;
-      border-radius: 999px;
-      background: var(--mint);
-      color: #0a1620;
-      border: none;
-      font-size: 14px;
-      min-height: 48px;
-      box-shadow: 0 0 16px rgba(46, 232, 168, 0.55);
-    }
-    .veil {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(18,36,48,.15), rgba(18,36,48,.55) 70%, rgba(18,36,48,.75));
-      pointer-events: none;
-      display: none;
+    /* 좁은 화면: 가로로 꽉 채우고 세로 비율 유지 (시안 그대로) */
+    @media (max-width: 900px) {
+      body { align-items: flex-start; padding-top: 0; }
+      .stage {
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+      }
     }
   </style>
 </head>
 <body>
   <main class="stage" role="main" aria-label="투윈BET 접속 안내">
-    <div class="veil" aria-hidden="true"></div>
-
-    <!-- Desktop: image hotspots — each domain goes to itself -->
-    <a class="hotspot hs-d1 desktop-only" href="https://sgo688.com" target="_blank" rel="noopener noreferrer" aria-label="sgo688.com"></a>
-    <a class="hotspot hs-d2 desktop-only" href="https://sgo334.com" target="_blank" rel="noopener noreferrer" aria-label="sgo334.com"></a>
-    <a class="hotspot hs-d3 desktop-only" href="https://sg778.com" target="_blank" rel="noopener noreferrer" aria-label="sg778.com"></a>
-    <a class="hotspot hs-slot desktop-only" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer" aria-label="슬롯방송 바로가기"></a>
-    <a class="hotspot hs-tg desktop-only" href="https://t.me/member_inquiry_cs_bot" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 바로가기"></a>
-
-    <!-- Mobile buttons -->
-    <div class="mobile-ui">
-      <img class="logo-m" src="logo.png" alt="TwowinBET" width="280" height="45" />
-      <p class="copy-m">원활한 서비스 제공을 위해<br/>현재 접속 가능한 주소를 안내해 드리겠습니다.</p>
-      <a class="btn" href="https://sgo688.com" target="_blank" rel="noopener noreferrer">sgo688.com</a>
-      <a class="btn" href="https://sgo334.com" target="_blank" rel="noopener noreferrer">sgo334.com</a>
-      <a class="btn" href="https://sg778.com" target="_blank" rel="noopener noreferrer">sg778.com</a>
-      <div class="btn-row">
-        <a class="btn" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer">슬롯방송 바로가기</a>
-        <a class="btn" href="https://t.me/member_inquiry_cs_bot" target="_blank" rel="noopener noreferrer">텔레그램 바로가기</a>
-      </div>
-    </div>
+    <a class="hotspot hs-d1" href="https://sgo688.com" target="_blank" rel="noopener noreferrer" aria-label="sgo688.com"></a>
+    <a class="hotspot hs-d2" href="https://sgo334.com" target="_blank" rel="noopener noreferrer" aria-label="sgo334.com"></a>
+    <a class="hotspot hs-d3" href="https://sg778.com" target="_blank" rel="noopener noreferrer" aria-label="sg778.com"></a>
+    <a class="hotspot hs-slot" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer" aria-label="슬롯방송 바로가기"></a>
+    <a class="hotspot hs-tg" href="https://t.me/member_inquiry_cs_bot" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 바로가기"></a>
   </main>
 </body>
 </html>
