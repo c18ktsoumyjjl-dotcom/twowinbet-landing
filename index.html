@@ -15,6 +15,7 @@
       background: var(--navy);
       -webkit-tap-highlight-color: transparent;
     }
+    /* scale-to-fit (contain): 이미지 전부 보이되, 뷰포트는 네이비로 채움 */
     .frame {
       position: fixed;
       top: 50%;
@@ -42,11 +43,11 @@
       outline-offset: 2px;
     }
 
-    /* PC: 1280×720 = 16:9 cover */
+    /* PC: 16:9 contain — 잘림 없이 전체 표시 */
     @media (min-width: 901px) {
       .frame {
-        width: max(100vw, calc(100svh * 16 / 9));
-        height: max(100svh, calc(100vw * 9 / 16));
+        width: min(100vw, calc(100svh * 16 / 9));
+        height: min(100svh, calc(100vw * 9 / 16));
       }
       .hs-d1 { left: 36.7%; top: 31.9%; width: 26.6%; height: 7.6%; }
       .hs-d2 { left: 36.7%; top: 43.1%; width: 26.6%; height: 7.6%; }
@@ -55,11 +56,11 @@
       .hs-tg { left: 51.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
     }
 
-    /* 모바일: 1024×1536 = 2:3 cover */
+    /* 모바일: 2:3 contain — 슬롯/텔레그램까지 전부 보이게 */
     @media (max-width: 900px) {
       .frame {
-        width: max(100vw, calc(100svh * 2 / 3));
-        height: max(100svh, calc(100vw * 3 / 2));
+        width: min(100vw, calc(100svh * 2 / 3));
+        height: min(100svh, calc(100vw * 3 / 2));
       }
       .hs-d1 { left: 25.8%; top: 60.9%; width: 48.8%; height: 7.4%; }
       .hs-d2 { left: 25.8%; top: 70.1%; width: 48.8%; height: 7.4%; }
