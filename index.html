@@ -2,43 +2,40 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>투윈BET 접속 안내</title>
   <meta name="robots" content="noindex,nofollow" />
   <style>
-    :root {
-      --navy: #122430;
-      --mint: #2EE8A8;
-    }
+    :root { --navy: #122430; --mint: #2EE8A8; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 100%;
       min-height: 100%;
       background: var(--navy);
-      color: #fff;
-      font-family: "Nanum Gothic", "Noto Sans KR", system-ui, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100svh;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-    }
-    /* PC·모바일 동일: 시안 이미지 + 투명 클릭 영역 */
-    .stage {
+    /* 이미지 실제 비율에 핫스팟을 고정 → PC/모바일 동일 */
+    .frame {
       position: relative;
-      width: min(100vw, 1280px);
-      aspect-ratio: 1280 / 720;
-      background: var(--navy) center / 100% 100% no-repeat url("bg.png");
-      overflow: hidden;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      line-height: 0;
+    }
+    .art {
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: top;
+      user-select: none;
+      pointer-events: none;
+      -webkit-user-drag: none;
     }
     .hotspot {
       position: absolute;
       display: block;
-      border-radius: 14px;
       z-index: 2;
+      border-radius: 12px;
     }
     .hotspot:focus-visible {
       outline: 2px solid var(--mint);
@@ -50,19 +47,24 @@
     .hs-slot { left: 33.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
     .hs-tg { left: 51.6%; top: 80.6%; width: 16.4%; height: 5.6%; border-radius: 999px; }
 
-    /* 좁은 화면: 가로로 꽉 채우고 세로 비율 유지 (시안 그대로) */
+    /* 모바일: 가로 꽉 채움, 위아래 네이비. 세로로 스크롤 가능 */
     @media (max-width: 900px) {
-      body { align-items: flex-start; padding-top: 0; }
-      .stage {
-        width: 100vw;
-        max-width: 100vw;
-        border-radius: 0;
+      .frame { max-width: none; width: 100vw; }
+    }
+    /* 짧은 가로 비율 화면(폰 가로모드 등)에서도 중앙 */
+    @media (min-width: 901px) {
+      body {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <main class="stage" role="main" aria-label="투윈BET 접속 안내">
+  <main class="frame" role="main" aria-label="투윈BET 접속 안내">
+    <img class="art" src="bg.png" width="1280" height="720" alt="투윈BET 접속 안내" />
     <a class="hotspot hs-d1" href="https://sgo688.com" target="_blank" rel="noopener noreferrer" aria-label="sgo688.com"></a>
     <a class="hotspot hs-d2" href="https://sgo334.com" target="_blank" rel="noopener noreferrer" aria-label="sgo334.com"></a>
     <a class="hotspot hs-d3" href="https://sg778.com" target="_blank" rel="noopener noreferrer" aria-label="sg778.com"></a>
