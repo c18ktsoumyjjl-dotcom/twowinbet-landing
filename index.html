@@ -2,149 +2,60 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <title>투윈BET 접속 안내</title>
-  <meta name="robots" content="noindex,nofollow" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <style>
-    :root {
-      --navy: #122430;
-      --mint: #2EE8A8;
-      --mint-dim: rgba(46, 232, 168, 0.22);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      background: var(--navy);
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .page {
-      position: relative;
-      min-height: 100dvh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 16px 28px;
-      overflow: hidden;
-    }
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .panel {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-top: min(38vh, 340px);
-    }
-    @media (max-width: 900px) {
-      .panel { margin-top: min(42vh, 380px); max-width: 340px; }
-    }
-    .domains {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .domain {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 54px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.02em;
-      background: linear-gradient(180deg, #1a3a4d 0%, #0e2432 100%);
-      border: 1.5px solid var(--mint);
-      box-shadow:
-        0 0 0 1px rgba(46,232,168,0.15),
-        0 0 18px rgba(46,232,168,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-    .domain:active { transform: scale(0.98); }
-    .cta-row {
-      width: 100%;
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .cta {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 44px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: #0a1a22;
-      font-weight: 800;
-      font-size: 0.92rem;
-      background: linear-gradient(180deg, #5ff0c0 0%, var(--mint) 100%);
-      box-shadow: 0 0 16px rgba(46,232,168,0.45);
-      white-space: nowrap;
-      padding: 0 10px;
-    }
-    .cta:active { transform: scale(0.98); }
-    .hint {
-      margin-top: 6px;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.65);
-      text-align: center;
-      line-height: 1.45;
-    }
-    @media (min-width: 901px) {
-      .domain { height: 58px; font-size: 1.25rem; }
-      .cta { height: 48px; font-size: 1rem; }
-      .panel { max-width: 460px; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>투윈BET 주소 | TwowinBET</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="brand.css" />
 </head>
 <body>
-  <div class="bg" aria-hidden="true">
-    <picture>
-      <source media="(max-width: 900px)" srcset="bg-mobile.png" />
-      <img src="bg.png" alt="" />
-    </picture>
-  </div>
-  <main class="page" role="main" aria-label="투윈BET 접속 안내">
-    <div class="panel">
-      <div class="domains">
-        <a class="domain" href="https://tw-00.com" target="_blank" rel="noopener noreferrer">tw-00.com</a>
-        <a class="domain" href="https://tw-11.com" target="_blank" rel="noopener noreferrer">tw-11.com</a>
-        <a class="domain" href="https://tw-22.com" target="_blank" rel="noopener noreferrer">tw-22.com</a>
+  <nav class="Navigation" aria-label="주요 메뉴">
+    <div class="nav-container">
+      <button class="mobile-menu-btn" type="button" aria-label="메뉴 열기/닫기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu">
+        <a class="nav-item active" href="index.html"><span class="nav-text">홈</span></a>
+        <a class="nav-item" href="events.html"><span class="nav-text">이벤트</span></a>
+        <a class="nav-item" href="faq.html"><span class="nav-text">FAQ</span></a>
+        <a class="nav-item" href="about.html"><span class="nav-text">소개</span></a>
+        <a class="nav-item" href="contact.html"><span class="nav-text">문의</span></a>
       </div>
-      <div class="cta-row">
-        <a class="cta" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer">슬롯방송 바로가기</a>
-        <a class="cta" href="https://t.me/Twowin888" target="_blank" rel="noopener noreferrer">텔레그램 바로가기</a>
-      </div>
-      <p class="hint">위 주소를 누르면 사이트로 이동합니다.</p>
     </div>
-  </main>
+  </nav>
+  <div class="mobile-overlay" hidden></div>
+  <div class="Domain page-container">
+    <div class="domain-contents">
+      <div class="logo">
+        <img src="logo.png" alt="TwowinBET" width="800" height="146" loading="eager" decoding="async" />
+      </div>
+      <div class="title">투윈BET 주소 안전한 도메인</div>
+      <div class="sub-title">
+        <div>실시간 업데이트로 안전한 접속을 보장합니다.</div>
+        <div>TwowinBET 메이저 베팅사이트 스포츠, 카지노, 슬롯&nbsp;이용가능한&nbsp;도메인</div>
+      </div>
+      <a class="domain-link" href="https://tw-00.com" target="_blank" rel="noopener noreferrer">
+        <div class="domain-box"><div class="domain">바로가기</div></div>
+      </a>
+      <a class="domain-link" href="https://live.twowintv.com" target="_blank" rel="noopener noreferrer">
+        <div class="domain-box"><div class="domain">슬롯방송 바로가기</div></div>
+      </a>
+      <div class="telegram-section">
+        <a class="telegram-link" href="https://t.me/Twowin888" target="_blank" rel="noopener noreferrer">
+          <img class="tg-logo" src="telegram_ico.svg" alt="Telegram" width="72" height="72" loading="lazy" />
+          <span class="telegram-text">텔레그램 고객센터 바로가기</span>
+        </a>
+      </div>
+    </div>
+    <div id="bg-video" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 900px)" srcset="bg-mobile.png" />
+        <img class="bg-img" src="bg.png" alt="" />
+      </picture>
+      <div class="video-screenguard"></div>
+    </div>
+  </div>
+  <script src="nav.js" defer></script>
 </body>
 </html>

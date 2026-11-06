@@ -1,0 +1,347 @@
+/* TwowinBET brand system — from 프라그마틱/부운고 mint gradient cards
+   Sampled: mint #3EE6B8/#4EFBC8 → deep teal #06303A/#0B252D, page #060B18
+*/
+:root {
+  --brand-mint: #3EE6B8;
+  --brand-mint-bright: #4EFBC8;
+  --brand-mint-mid: #1BC9A0;
+  --brand-teal: #0B5960;
+  --brand-deep: #06303A;
+  --brand-deeper: #0B252D;
+  --brand-page: #060B18;
+  --brand-card-radius: 16px;
+  --brand-glow: 0 0 18px rgba(62, 230, 184, 0.35), 0 8px 28px rgba(0, 0, 0, 0.45);
+  --brand-border: 1.5px solid rgba(62, 230, 184, 0.75);
+  --brand-grad: linear-gradient(135deg, #4EFBC8 0%, #3EE6B8 18%, #149E88 48%, #0B5960 72%, #06303A 100%);
+  --brand-grad-soft: linear-gradient(135deg, rgba(78, 251, 200, 0.95) 0%, rgba(62, 230, 184, 0.55) 22%, rgba(11, 89, 96, 0.85) 62%, rgba(6, 48, 58, 0.98) 100%);
+  --brand-arcs: repeating-radial-gradient(circle at 18% 12%, transparent 0 18px, rgba(255,255,255,0.06) 18px 19px, transparent 19px 36px);
+}
+
+html, body {
+  background: var(--brand-page) !important;
+  color: #fff;
+}
+
+/* Dim cyber-city so mint cards pop */
+#bg-video {
+  background: var(--brand-page) !important;
+}
+#bg-video .bg-img {
+  opacity: 0.38;
+  filter: saturate(0.85) brightness(0.55) contrast(1.05);
+}
+#bg-video .video-screenguard {
+  backdrop-filter: blur(2.5px) !important;
+  -webkit-backdrop-filter: blur(2.5px) !important;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(62, 230, 184, 0.12) 0%, transparent 55%),
+    radial-gradient(rgba(6, 11, 24, 0) 40%, rgba(6, 11, 24, 0.55) 100%),
+    linear-gradient(180deg, rgba(6, 11, 24, 0.45) 0%, rgba(6, 11, 24, 0.88) 100%) !important;
+}
+.Domain::before {
+  background:
+    radial-gradient(40% 100% at 50% 0, rgba(62, 230, 184, 0.16) 0%, transparent 60%),
+    radial-gradient(60% 90% at 0 100%, rgba(62, 230, 184, 0.08) 0%, transparent 50%),
+    radial-gradient(60% 90% at 100% 100%, rgba(62, 230, 184, 0.08) 0%, transparent 50%) !important;
+}
+@media (max-width: 767px) {
+  #bg-video {
+    background: radial-gradient(ellipse at 50% 20%, rgba(62, 230, 184, 0.1), transparent 50%), var(--brand-page) !important;
+  }
+}
+
+/* —— Shared mint card surface —— */
+.brand-surface,
+.Domain a.domain-link .domain-box,
+.Navigation .nav-menu,
+.Navigation .mobile-menu-btn,
+.Events .event-card,
+.Events .events-notice,
+.FAQ .faq-categories .category-btn,
+.FAQ .faq-items .faq-item,
+.FAQ .faq-contact .contact-card,
+.About .features-section .features-grid .feature-card,
+.About .games-section .games-grid .game-card,
+.About .cta-section .cta-content .cta-buttons .cta-btn,
+.Contact .contact-methods .methods-grid .method-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--brand-card-radius) !important;
+  border: var(--brand-border) !important;
+  background: var(--brand-grad-soft) !important;
+  box-shadow: var(--brand-glow) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.brand-surface::after,
+.Domain a.domain-link .domain-box::after,
+.Events .event-card::after,
+.FAQ .faq-items .faq-item::after,
+.FAQ .faq-contact .contact-card::after,
+.About .features-section .features-grid .feature-card::after,
+.About .games-section .games-grid .game-card::after,
+.Contact .contact-methods .methods-grid .method-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--brand-arcs);
+  opacity: 0.55;
+  border-radius: inherit;
+}
+
+/* Home buttons */
+.Domain a.domain-link .domain-box {
+  background: var(--brand-grad) !important;
+  height: 64px;
+  line-height: 64px;
+  margin: 20px auto !important;
+  max-width: 500px;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, filter 0.3s !important;
+}
+.Domain a.domain-link .domain-box:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 0 28px rgba(62, 230, 184, 0.5), 0 16px 40px rgba(0,0,0,0.55) !important;
+  filter: brightness(1.06);
+  background: linear-gradient(135deg, #5fffd2 0%, #3EE6B8 22%, #1BC9A0 50%, #0B5960 78%, #06303A 100%) !important;
+}
+.Domain a.domain-link .domain-box .domain {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 0 12px rgba(6, 48, 58, 0.35);
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 767px) {
+  .Domain a.domain-link .domain-box {
+    height: 56px !important;
+    line-height: 56px !important;
+    margin: 16px auto !important;
+  }
+  .Domain a.domain-link .domain-box .domain { font-size: 18px !important; }
+}
+
+/* Nav */
+.Navigation .nav-menu {
+  background: linear-gradient(135deg, rgba(78,251,200,0.22), rgba(6,48,58,0.85)) !important;
+  border: 1px solid rgba(62,230,184,0.45) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35), 0 0 16px rgba(62,230,184,0.18) !important;
+}
+.Navigation .nav-menu .nav-item {
+  color: #fff !important;
+}
+.Navigation .nav-menu .nav-item:hover,
+.Navigation .nav-menu .nav-item.active {
+  color: #061018 !important;
+  background: linear-gradient(180deg, #5fffd2, var(--brand-mint)) !important;
+  box-shadow: 0 2px 10px rgba(62,230,184,0.45) !important;
+  font-weight: 700 !important;
+}
+.Navigation .mobile-menu-btn {
+  background: linear-gradient(135deg, rgba(78,251,200,0.25), rgba(6,48,58,0.9)) !important;
+  border: 1px solid rgba(62,230,184,0.55) !important;
+}
+.Navigation .mobile-menu-btn span { background: #fff !important; }
+.Navigation .mobile-menu-btn.open span:first-child,
+.Navigation .mobile-menu-btn.open span:nth-child(3) {
+  background: var(--brand-mint) !important;
+}
+
+/* Title/sub contrast */
+.Domain .title,
+.Events .events-header .events-title,
+.FAQ .faq-header .faq-title,
+.Contact .contact-header .header-title,
+.About .hero-section .hero-title {
+  color: #fff !important;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+}
+.Domain .sub-title,
+.Events .events-header .events-subtitle,
+.FAQ .faq-header .faq-subtitle,
+.Contact .contact-header .header-subtitle {
+  color: #c8f7e8 !important;
+}
+
+/* Events */
+.Events, .FAQ, .About, .Contact {
+  background: transparent;
+  color: #e8fff8;
+}
+.Events:before, .FAQ:before, .Contact:before, .About:before {
+  background:
+    radial-gradient(40% 100% at 50% 0, rgba(62,230,184,0.12) 0%, transparent 60%),
+    radial-gradient(60% 90% at 0 100%, rgba(62,230,184,0.08) 0%, transparent 50%),
+    radial-gradient(60% 90% at 100% 100%, rgba(62,230,184,0.08) 0%, transparent 50%) !important;
+}
+.Events .event-card {
+  padding: 32px !important;
+}
+.Events .event-card:hover,
+.About .features-section .features-grid .feature-card:hover,
+.About .games-section .games-grid .game-card:hover,
+.Contact .contact-methods .methods-grid .method-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 0 32px rgba(62,230,184,0.4), 0 20px 50px rgba(0,0,0,0.55) !important;
+}
+.Events .event-card .event-header .event-title,
+.Events .event-card .event-benefits .benefits-title,
+.Events .events-notice .notice-title,
+.FAQ .faq-contact .contact-card .contact-title,
+.About .features-section .features-grid .feature-card .feature-title,
+.About .games-section .games-grid .game-card .game-title,
+.Contact .contact-methods .methods-grid .method-card .method-title {
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  position: relative; z-index: 1;
+}
+.Events .event-card .event-description,
+.Events .event-card .event-benefits .benefits-list .benefit-item,
+.Events .events-notice .notice-list .notice-item,
+.FAQ .faq-items .faq-item .faq-answer .answer-content,
+.About .features-section .features-grid .feature-card .feature-description,
+.About .games-section .games-grid .game-card .game-description,
+.About .games-section .games-grid .game-card .game-features .game-feature,
+.Contact .contact-methods .methods-grid .method-card .method-description {
+  color: #d7f5ea !important;
+  position: relative; z-index: 1;
+}
+.Events .event-card .event-benefits .benefits-list .benefit-item:before,
+.Events .events-notice .notice-list .notice-item:before,
+.About .games-section .games-grid .game-card .game-features .game-feature:before {
+  color: var(--brand-mint-bright) !important;
+}
+.Events .event-card .event-badge {
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 12px rgba(62,230,184,0.25);
+  z-index: 2;
+}
+
+/* FAQ */
+.FAQ .faq-categories .category-btn {
+  color: #e8fff8 !important;
+  text-align: left;
+  background: var(--brand-grad-soft) !important;
+}
+.FAQ .faq-categories .category-btn.active,
+.FAQ .faq-categories .category-btn:hover {
+  color: #061018 !important;
+  background: linear-gradient(135deg, #5fffd2, var(--brand-mint)) !important;
+  border-color: rgba(255,255,255,0.45) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 18px rgba(62,230,184,0.4) !important;
+}
+.FAQ .faq-items .faq-item .faq-question {
+  color: #fff !important;
+  position: relative; z-index: 1;
+}
+.FAQ .faq-items .faq-item .faq-question:hover,
+.FAQ .faq-items .faq-item .faq-question.active {
+  background: rgba(62,230,184,0.12) !important;
+  color: var(--brand-mint-bright) !important;
+}
+.FAQ .faq-items .faq-item .faq-answer {
+  background: rgba(6,11,24,0.35) !important;
+}
+.FAQ .faq-items .faq-item .faq-answer.open {
+  border-top: 1px solid rgba(62,230,184,0.25) !important;
+}
+.FAQ .faq-contact .contact-card .contact-buttons .contact-btn.telegram,
+.Contact .contact-methods .methods-grid .method-card .method-btn,
+.About .cta-section .cta-content .cta-buttons .cta-btn.primary {
+  background: var(--brand-grad) !important;
+  color: #fff !important;
+  border: var(--brand-border) !important;
+  border-radius: 16px !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  box-shadow: var(--brand-glow) !important;
+  text-decoration: none;
+}
+.FAQ .faq-contact .contact-card .contact-buttons .contact-btn.telegram:hover,
+.Contact .contact-methods .methods-grid .method-card .method-btn:hover,
+.About .cta-section .cta-content .cta-buttons .cta-btn.primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+.About .cta-section .cta-content .cta-buttons .cta-btn.secondary {
+  background: transparent !important;
+  color: var(--brand-mint-bright) !important;
+  border: 2px solid var(--brand-mint) !important;
+}
+.About .cta-section {
+  background: linear-gradient(135deg, rgba(62,230,184,0.12), rgba(6,48,58,0.35)) !important;
+  border-top: 1px solid rgba(62,230,184,0.25) !important;
+}
+.About .stats-section {
+  background: linear-gradient(135deg, rgba(62,230,184,0.12), rgba(6,48,58,0.55)) !important;
+  border-top: 1px solid rgba(62,230,184,0.2);
+  border-bottom: 1px solid rgba(62,230,184,0.2);
+}
+.About .stats-section .stats-grid .stat-item .stat-number {
+  color: var(--brand-mint-bright) !important;
+  text-shadow: 0 0 16px rgba(62,230,184,0.35);
+}
+.About .stats-section .stats-grid .stat-item .stat-label { color: #c8f7e8 !important; }
+.About .features-section .features-grid .feature-card .feature-icon .heroicon,
+.Contact .contact-methods .methods-grid .method-card .method-icon .heroicon {
+  color: #f2fffa !important;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35)) drop-shadow(0 0 8px rgba(62,230,184,0.35));
+}
+.Contact .contact-methods .methods-grid .method-card .method-available {
+  color: #061018 !important;
+  background: linear-gradient(135deg, #5fffd2, var(--brand-mint)) !important;
+  font-weight: 700;
+}
+
+/* Telegram row — metal silver plane on mint disc */
+.telegram-section .tg-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  box-shadow: 0 0 16px rgba(62,230,184,0.45), 0 4px 14px rgba(0,0,0,0.4);
+}
+.telegram-section .telegram-text {
+  color: #fff !important;
+  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+}
+@media (max-width: 767px) {
+  .telegram-section .tg-logo { width: 60px; height: 60px; }
+}
+
+/* About hero: force readable white/mint title (override clipped gradient) */
+.About .hero-section .hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, #4EFBC8 55%, #3EE6B8 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
+}
+.About .section-title,
+.About .mission-section .mission-content .mission-title,
+.About .cta-section .cta-content .cta-title {
+  color: #fff !important;
+}
+.About .mission-section .mission-content .mission-text p strong {
+  color: var(--brand-mint-bright) !important;
+}
+.About .games-section {
+  background: rgba(6, 11, 24, 0.45) !important;
+}
+
+/* Fix mobile hamburger stays top-right (menu must be absolute, not in-flow) */
+@media (max-width: 767px) {
+  .Navigation { top: 15px !important; right: 15px !important; left: auto !important; width: auto !important; }
+  .Navigation .nav-menu {
+    position: absolute !important;
+    top: 50px !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 220px !important;
+    flex-direction: column !important;
+  }
+  .Navigation .mobile-menu-btn { display: flex !important; }
+}
